@@ -2,7 +2,7 @@ import os
 import psycopg2
 
 
-conn = psycopg2.conn(
+conn = psycopg2.connect(
         host="localhost",
         database="flask_db",
         user=os.environ['DB_USERNAME'],
@@ -25,7 +25,7 @@ cur.execute('CREATE TABLE books (id serial PRIMARY KEY,'
 # Insert data into the table
 
 cur.execute('INSERT INTO BOOKS (title, author, page_num, review)'
-        'VALUES (%s, %s, %s, %s)'
+        'VALUES (%s, %s, %s, %s)',
         ('A tale of Two Cities',
         'Charles Dickens',
         489,
